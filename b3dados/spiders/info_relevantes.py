@@ -4,8 +4,8 @@ from scrapy.utils.response import open_in_browser
 import pandas as pd
 
 
-class DadosSpider(scrapy.Spider):
-    name = 'dados'
+class InfoRelevantesSpider(scrapy.Spider):
+    name = 'info_relevantes'
     allowed_domains = ['bvmf.bmfbovespa.com.br']
     start_urls = [
         'http://bvmf.bmfbovespa.com.br/']
