@@ -3,17 +3,18 @@ from scrapy.http import Request
 from scrapy.utils.response import open_in_browser
 import pandas as pd
 
+
 class DadosSpider(scrapy.Spider):
     name = 'dados'
     allowed_domains = ['bvmf.bmfbovespa.com.br']
     start_urls = [
-        'http://bvmf.bmfbovespa.com.br/pt-br/mercados/acoes/empresas/ExecutaAcaoConsultaInfoRelevantes.asp?codCVM=16705&ano=2018&categoria=7']
+        'http://bvmf.bmfbovespa.com.br/']
 
     cod_list = [35, 60, 16705, 906]
     seq_years = range(2002, 2021)
     tabela = pd.read_csv('SPW_CIA_ABERTA.csv')
     cod_list = tabela.CD_CVM
-    
+
     def start_requests(self, cod_list=cod_list, seq_years=seq_years):
         # Set the headers here. The important part is "application/json"
         headers = {
@@ -30,7 +31,7 @@ class DadosSpider(scrapy.Spider):
 
         for cod_cvm in cod_list:
             for year in seq_years:
-                url = 'http://bvmf.bmfbovespa.com.br/pt-br/mercados/acoes/empresas/ExecutaAcaoConsultaInfoRelevantes.asp?codCVM=%s&ano=%i&categoria=7' % (
+                url = 'http://bvmf.bmfbovespa.com.br/pt-br/mercados/acoes/empresas/ExecutaAcaoConsultaInfoRelevantes.asp?codCVM=%s&ano=%i' % (
                     cod_cvm, year)
                 yield Request(url, headers=headers, callback=self.parse_year,
                               meta={'cod_cvm': cod_cvm})
