@@ -38,4 +38,4 @@ class DividendosSpider(scrapy.Spider):
             table_html = response.xpath('//table').extract_first()
             table = pd.read_html(table_html)[0]
             table['codCVM'] = cod_cvm
-            yield table.to_dict()
+            yield table.to_dict(orient='list')

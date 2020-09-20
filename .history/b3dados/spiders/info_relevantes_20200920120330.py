@@ -27,15 +27,12 @@ class InfoRelevantesSpider(scrapy.Spider):
                               meta={'cod_cvm': cod_cvm})
 
     def parse_info(self, response):
-        cod_cvm = response.meta.get('cod_cvm')
-        table_list = response.xpath('//*[@class="large-12 columns"]')
+        try:
+            cod_cvm = response.meta.get('cod_cvm')
+            table_list = response.xpath('//*[@class="large-12 columns"]')
 
-        table_text = [x.xpath('.//*/text()').extract_first()
-                      for x in table_list]
-        alert_text = 'Não há informações disponíveis para os parâmetros selecionados.'
-        if alert_text in table_text:
-            pass
-        else:
+            table_text = [x.xpath('.//*/text()').extract_first()
+                          for x in table_list]
             for table in table_list[2:]:
                 table_data = table.xpath('.//table').extract_first()
                 table_data = pd.read_html(table_data, index_col=0)[0].T.iloc[0]
@@ -44,3 +41,5 @@ class InfoRelevantesSpider(scrapy.Spider):
                 table_data['Link'] = file_link
                 table_data['codCVM'] = cod_cvm
                 yield table_data.to_dict()
+        except TypeError:
+            pass
