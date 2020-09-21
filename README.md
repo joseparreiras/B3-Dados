@@ -7,6 +7,7 @@ Fonte: http://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/
 Coleta o registro de data e horário de divulgação de demonstrações financeiras, fatos relevantes, comunicados e demais informações importantes comunicadas à B3
 
 ### dividendos
+Coelta de dados de proventos distruibuídos pela empresa segundo a tabela em Eventos Corporativos >> Proventos em Dinheiro
 
 ## Arquivos
 1. *SPW_CIA_ABERTA.csv*:  contém a relação de códigos da CVM
