@@ -1,6 +1,14 @@
 # B3-Dados
-Scrapping dos registros de data e horário de divulgação de informações relevantes comunicadas à B3
-
+Scrapping de dados públicos de empresas listadas na B2 (Brasil, Bolsa, Balcão)
 Fonte: http://www.b3.com.br/pt_br/produtos-e-servicos/negociacao/renda-variavel/empresas-listadas.htm
 
-1. SPW_CIA_ABERTA.csv contém a relação de códigos da CVM
+## Spiders
+### info_relevantes
+Coleta o registro de data e horário de divulgação de demonstrações financeiras, fatos relevantes, comunicados e demais informações importantes comunicadas à B3
+
+### dividendos
+Coelta de dados de proventos distruibuídos pela empresa segundo a tabela em Eventos Corporativos >> Proventos em Dinheiro
+
+## Arquivos
+1. *SPW_CIA_ABERTA.csv*:  contém a relação de códigos da CVM
+2. *data.zip*:  arquivo comprimido com os outputs de cada spider
