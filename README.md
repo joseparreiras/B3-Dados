@@ -8,6 +8,6 @@ Coleta o registro de data e horário de divulgação de demonstrações financei
 
 ### dividendos
 
-### Arquivos
+## Arquivos
 1. *SPW_CIA_ABERTA.csv*:  contém a relação de códigos da CVM
 2. *data.zip*:  arquivo comprimido com os outputs de cada spider
